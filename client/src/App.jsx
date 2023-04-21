@@ -8,15 +8,19 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
+    <div className='bg-black h-screen'>
+      <Navbar />
+      <div className="container mx-auto py-4 px-10 text-white">
       <TaskContextProvider>
-        <Navbar />
-          <Routes>
+        <Routes>
           <Route path="/" element={<TasksPage />} />
           <Route path="/new" element={<TaskForm />} />
           <Route path="/edit/:id" element={<TaskForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </TaskContextProvider>
+      </div>
+    </div>
   );
 }
 
