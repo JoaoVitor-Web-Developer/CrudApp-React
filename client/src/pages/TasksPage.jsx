@@ -6,12 +6,18 @@ function TasksPage() {
   const { tasks, loadTasks } = useTasks();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('all');
   const [doneFilter, setDoneFilter] = useState(null);
 
   useEffect(() => {
     loadTasks();
     setCurrentPage(1);
   }, []);
+
+  useEffect(() => {
+    setSelectedFilter(doneFilter === null ? 'all' : doneFilter === 0 ? 'notDone' : 'done');
+  }, [doneFilter]);
+
 
   const tasksPerPage = 9;
   const indexOfLastTask = currentPage * tasksPerPage;
@@ -34,6 +40,7 @@ function TasksPage() {
     <div>
       <h1 className='text-5xl text-center m-6'>Tarefas</h1>
 
+    <label className='flex'>Pesquisa por sua tarega abaixo:</label>
       <input
         type="text"
         placeholder='Pesquisa por sua tarefa'
@@ -47,14 +54,19 @@ function TasksPage() {
             setCurrentPage(1);
           }
         }}
-        className='text-black'
+        className='bg-white w-80 h-9 rounded-xl pl-4 mb-4 mt-3 text-black'
       />
 
-      <select className='text-black' value={doneFilter} onChange={(event) => setDoneFilter(event.target.value)}>
-        <option value={null}>Todos</option>
-        <option value={0}>Não concluídas</option>
-        <option value={1}>Concluídas</option>
+      <select className='bg-white text-black w-32 text-center rounded-md p-1 ml-14 mr-4' value={selectedFilter} onChange={(event) => {
+        setSelectedFilter(event.target.value);
+        setDoneFilter(event.target.value === 'all' ? null : event.target.value === 'notDone' ? 0 : 1);
+      }}>
+        <option value='all'>Todos</option>
+        <option value='notDone'>Não concluídas</option>
+        <option value='done'>Concluídas</option>
       </select>
+
+      <button className='bg-cyan-600 px-2 py-1 rounded-md' onClick={() => setDoneFilter(null)}>Limpar Filtro</button>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {renderMain()}

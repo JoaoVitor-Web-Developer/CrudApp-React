@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <div className='bg-white text-black flex justify-between px-20 py-6'>
+    <div className='bg-white text-black flex justify-between px-20 py-4'>
       <Link to='/' className='text-3xl transition-all hover:text-gray-600'>
         <h1>React Crud</h1>
       </Link>

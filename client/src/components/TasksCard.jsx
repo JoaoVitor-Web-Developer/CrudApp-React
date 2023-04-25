@@ -6,7 +6,7 @@ function TasksCard({ task }) {
     const navigate = useNavigate();
 
     const handleDone = async () => {
-        await toggleTaskDone(task.id)
+        await toggleTaskDone(task.id);
     }
 
     return (
