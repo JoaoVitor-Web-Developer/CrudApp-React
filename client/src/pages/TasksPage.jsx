@@ -40,7 +40,7 @@ function TasksPage() {
     <div>
       <h1 className='text-5xl text-center m-6'>Tarefas</h1>
 
-    <label className='flex'>Pesquisa por sua tarega abaixo:</label>
+    <label className='flex'>Pesquisa por sua tarefa abaixo:</label>
       <input
         type="text"
         placeholder='Pesquisa por sua tarefa'
