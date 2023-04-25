@@ -5,7 +5,7 @@ import { TaskContext } from './TaskContext';
 export const useTasks = () => {
     const context = useContext(TaskContext);
     if (context === undefined) {
-        throw new Error('UseTasks mus be use within a TaskContextProvider')
+        throw new Error('Tarefas de uso devem ser usadas dentro de um Provedor de Contexto de Tarefa')
     }
     return context;
 };
@@ -31,7 +31,6 @@ export const TaskContextProvider = ({ children }) => {
     const createTask = async (task) => {
         try {
             await createTaskRequest(task);
-            //setTasks([...tasks, responde.data]);
         } catch (error) {
             console.error(error)
         }
@@ -39,8 +38,8 @@ export const TaskContextProvider = ({ children }) => {
 
     const getTask = async (id) => {
         try {
-           const response = await getTaskRequest(id);
-           return response.data
+            const response = await getTaskRequest(id);
+            return response.data
         } catch (error) {
             console.error(error)
         }
@@ -66,16 +65,17 @@ export const TaskContextProvider = ({ children }) => {
         }
     }
 
-    return ( 
-    <TaskContext.Provider value={{ tasks,
-        loadTasks,
-        deleteTask,
-        createTask,
-        getTask,
-        updateTask,
-        toggleTaskDone 
-    }}>
-        {children}
-    </TaskContext.Provider>
-    ); 
+    return (
+        <TaskContext.Provider value={{
+            tasks,
+            loadTasks,
+            deleteTask,
+            createTask,
+            getTask,
+            updateTask,
+            toggleTaskDone
+        }}>
+            {children}
+        </TaskContext.Provider>
+    );
 };

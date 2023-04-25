@@ -8,7 +8,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className='bg-black h-screen'>
+    <div className='bg-gray-800 min-h-screen '>
       <Navbar />
       <div className="container mx-auto py-4 px-10 text-white">
       <TaskContextProvider>

@@ -18,7 +18,7 @@ function TasksCard({ task }) {
                     <span>{task.done == 1 ? "✅" : "❌"}</span>
                 </button>
             </header>
-            <p className='text-xs p-2'>{task.description}</p>
+            <p className='text-sm p-2'>{task.description}</p>
             <span>{new Date(task.createAt).toLocaleString('pt-br')}</span>
             <div className='flex gap-x-1 justify-end'>
                 <button className='bg-red-700 px-2 py-1 rounded-md' onClick={() => deleteTask(task.id)}>Deletar</button>
