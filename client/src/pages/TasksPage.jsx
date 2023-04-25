@@ -66,7 +66,7 @@ function TasksPage() {
         <option value='done'>Concluídas</option>
       </select>
 
-      <button className='bg-cyan-600 px-2 py-1 rounded-md' onClick={() => setDoneFilter(null)}>Limpar Filtro</button>
+      <button className='bg-cyan-600 px-2 py-1 rounded-md sm:mb-6 transition-all hover:scale-95' onClick={() => setDoneFilter(null)}>Limpar Filtro</button>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {renderMain()}

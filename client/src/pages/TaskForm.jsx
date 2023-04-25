@@ -69,7 +69,7 @@ function TaskForm() {
               value={values.description}
             ></textarea>
 
-            <button className='block bg-green-500 mt-4 px-2 py-3 rounded-md w-full' type='submit' disabled={isSubmitting}>
+            <button className='block bg-green-500 mt-4 px-2 py-3 text-xl rounded-md w-full transition-all hover:bg-green-600 hover:scale-95' type='submit' disabled={isSubmitting}>
               {isSubmitting ? "Salvando" : "Salvar"}
             </button>
           </Form>
