@@ -10,8 +10,8 @@ function TasksCard({ task }) {
     }
 
     return (
-        <div style={{ backgroundColor: task.done ? '' : '#F44242'}} 
-        className='bg-green-900 rounded-md p-6'>
+        <div style={{ backgroundColor: task.done ? '' : '#F44242' }}
+            className='bg-green-900 rounded-md p-6'>
             <header className='flex justify-between'>
                 <h2 className='text-xl font-bold p-1'>{task.title}</h2>
                 <button onClick={() => handleDone(task.done)}>
@@ -19,10 +19,10 @@ function TasksCard({ task }) {
                 </button>
             </header>
             <p className='text-sm p-2'>{task.description}</p>
-            <span>Criado em: {new Date(task.createAt).toLocaleString('pt-br')}</span>
+            <span className='bg-gray-300 px-2 rounded-md text-black font-semibold'>Criado em: {new Date(task.createAt).toLocaleString('pt-br')}</span>
             <div className='flex gap-x-1 justify-end'>
-                <button className='bg-red-700 px-2 py-1 rounded-md' onClick={() => deleteTask(task.id)}>Deletar</button>
-                <button className='bg-green-500 px-2 py-1 rounded-md' onClick={() => navigate(`/edit/${task.id}`)}>Editar</button>
+                <button className='bg-red-700 px-2 py-1 my-2 rounded-md transition-all hover:scale-105 hover:bg-red-800' onClick={() => deleteTask(task.id)}>Deletar</button>
+                <button className='bg-green-500 px-2 py-1 my-2 rounded-md transition-all hover:scale-105 hover:bg-green-600' onClick={() => navigate(`/edit/${task.id}`)}>Editar</button>
             </div>
         </div>
     );
