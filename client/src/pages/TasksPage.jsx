@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import TasksCard from '../components/TasksCard'
-import { useTasks } from '../context/TaskProvider'
+import { useEffect, useState } from 'react';
+import TasksCard from '../components/TasksCard';
+import { useTasks } from '../context/TaskProvider';
 
 function TasksPage() {
   const { tasks, loadTasks } = useTasks();
@@ -34,6 +34,23 @@ function TasksPage() {
     return currentTasks.map((task) => <TasksCard task={task} key={task.id} />)
   }
 
+  function renderPageNumbers() {
+    const pageNumbers = [];
+
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          className={`px-2 py-1 rounded-md text-lg transition-all hover:bg-gray-200 ${currentPage === i ? 'bg-gray-200' : 'bg-white'
+            }`}
+          onClick={() => setCurrentPage(i)}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pageNumbers;
+  }
 
 
   return (
@@ -59,7 +76,7 @@ function TasksPage() {
         />
 
         <div className='flex flex-col sm:flex-row items-center justify-center sm:justify-end w-full sm:w-auto'>
-          <select className='bg-white text-black w-full sm:w-32 text-center rounded-md p-1 my-2 sm:my-0 mx-4' value={selectedFilter} onChange={(event) => {
+          <select className='bg-white text-black w-full sm:w-36 text-center rounded-md p-1 my-2 sm:my-0 mx-4' value={selectedFilter} onChange={(event) => {
             setSelectedFilter(event.target.value);
             setDoneFilter(event.target.value === 'all' ? null : event.target.value === 'notDone' ? 0 : 1);
           }}>
@@ -71,29 +88,31 @@ function TasksPage() {
           <button className='bg-cyan-600 px-2 py-1 rounded-md w-full sm:w-auto mb-6 sm:mb-0 transition-all hover:scale-95' onClick={() => setDoneFilter(null)}>Limpar Filtro</button>
         </div>
       </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {renderMain()}
-        </div>
-
-        <div className='flex justify-center m-4 space-x-6'>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
-            className='bg-green-500 px-2 py-1 rounded-sm text-2xl'
-          >
-            ←
-          </button>
-
-          <button
-            disabled={filteredTasks.length <= indexOfLastTask}
-            onClick={() => setCurrentPage(currentPage + 1)}
-            className='bg-green-500 px-2 py-1 rounded-sm text-2xl'
-          >
-            →
-          </button>
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {renderMain()}
       </div>
-      )
+
+      <div className='flex justify-center m-4 space-x-6'>
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(currentPage - 1)}
+          className='bg-green-500 px-2 py-1 w-12 h-11 rounded-sm text-2xl transition-all hover:bg-green-600 hover:scale-105 cursor-pointer'
+        >
+          ←
+        </button>
+
+        <span className='text-white font-medium text-lg mx-auto my-auto'>{currentPage}</span>
+
+        <button
+          disabled={filteredTasks.length <= indexOfLastTask}
+          onClick={() => setCurrentPage(currentPage + 1)}
+          className='bg-green-500 px-2 py-1 w-12 h-11 rounded-sm text-2xl transition-all hover:bg-green-600 hover:scale-105 cursor-pointer'
+        >
+          →
+        </button>
+      </div>
+    </div>
+  )
 }
 
-      export default TasksPage;
+export default TasksPage;
