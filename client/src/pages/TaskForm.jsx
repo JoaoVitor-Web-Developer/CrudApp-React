@@ -3,6 +3,7 @@ import { useTasks } from '../context/TaskProvider';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+
 function TaskForm() {
 
   const { createTask, getTask, updateTask } = useTasks();
@@ -20,11 +21,13 @@ function TaskForm() {
         setTask({
           title: task.title,
           description: task.description,
-        })
+        });
       }
     };
     loadTask();
   }, []);
+
+
 
   return (
     <div>
@@ -41,7 +44,7 @@ function TaskForm() {
           setTask({
             title: "",
             description: "",
-          })
+          });
         }}
       >
         {({ handleChange, handleSubmit, values, isSubmitting }) => (
@@ -51,6 +54,7 @@ function TaskForm() {
             </h1>
             <label className='block'>Titulo:</label>
             <input
+              required
               type="text"
               name="title"
               placeholder='Escreva seu titulo'
@@ -61,15 +65,15 @@ function TaskForm() {
 
             <label className='block'>Descrição:</label>
             <textarea
+              required
               name="description"
               rows="3"
               placeholder='Escreve a descrição'
               className='px-3 py-1 rounded-md w-full text-black'
               onChange={handleChange}
-              value={values.description}
-            ></textarea>
-
-            <button className='block bg-green-500 mt-4 px-2 py-3 text-xl rounded-md w-full transition-all hover:bg-green-600 hover:scale-95' type='submit' disabled={isSubmitting}>
+              value={values.description}>
+            </textarea>
+            <button className='block bg-green-500 mt-4 px-2 py-3 text-xl rounded-md w-full transition-all hover:bg-green-600 hover:scale-95' type='submit' disabled={isSubmitting}> 
               {isSubmitting ? "Salvando" : "Salvar"}
             </button>
           </Form>
@@ -79,4 +83,4 @@ function TaskForm() {
   )
 }
 
-export default TaskForm
+export default TaskForm;

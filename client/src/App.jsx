@@ -3,7 +3,6 @@ import TasksPage from './pages/TasksPage';
 import TaskForm from './pages/TaskForm';
 import NotFound from './pages/NotFound';
 import { TaskContextProvider } from './context/TaskProvider';
-
 import Navbar from './components/Navbar';
 
 function App() {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import TasksCard from '../components/TasksCard';
 import { useTasks } from '../context/TaskProvider';
+import dataImg from '../image/dataImg.svg'
 
 function TasksPage() {
   const { tasks, loadTasks } = useTasks();
@@ -30,7 +31,12 @@ function TasksPage() {
 
   function renderMain() {
     if (filteredTasks.length === 0)
-      return <h1 className='flex justify-center'>Nenhuma tarefa encontrada</h1>;
+      return (
+        <>
+          <h1 className='flex justify-center'>Nenhuma tarefa encontrada</h1>
+          <img src={dataImg} alt='Nenhuma tarefa encontrada' className='w-32 h-32 mb-8' />
+        </>
+      );
     return currentTasks.map((task) => <TasksCard task={task} key={task.id} />)
   }
 
