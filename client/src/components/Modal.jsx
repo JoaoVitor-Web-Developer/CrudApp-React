@@ -3,8 +3,8 @@ import React from 'react'
 const Modal = ({ closeModal, deleteTask, task }) => {
     return (
         <div className='text-black fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 backdrop-blur-sm flex items-center justify-center'>
-            <div className='bg-white w-1/2 rounded-md p-6'>
-                <button className='absolute top-2 right-2 text-red-500' onClick={() => closeModal(false)}>X</button>
+            <div className='bg-white w-80 rounded-md p-6 sm:w-1/2'>
+                <button className='absolute top-2 right-4 text-red-500' onClick={() => closeModal(false)}>X</button>
                 <div className='text-2xl'>
                     <h1>Deseja realmente deletar esta tarefa?</h1>
                 </div>

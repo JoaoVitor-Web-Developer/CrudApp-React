@@ -34,7 +34,7 @@ function TasksPage() {
       return (
         <>
           <h1 className='flex justify-center'>Nenhuma tarefa encontrada</h1>
-          <img src={dataImg} alt='Nenhuma tarefa encontrada' className='w-32 h-32 mb-8' />
+          <img src={dataImg} alt='Nenhuma tarefa encontrada' className='flex w-32 h-32 mb-8 mx-auto sm:justify-center' />
         </>
       );
     return currentTasks.map((task) => <TasksCard task={task} key={task.id} />)
