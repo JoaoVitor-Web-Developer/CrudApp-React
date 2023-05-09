@@ -13,6 +13,7 @@ function TaskForm() {
   const params = useParams();
   const navigate = useNavigate();
 
+
   useEffect(() => {
     const loadTask = async () => {
       if (params.id) {
@@ -72,7 +73,7 @@ function TaskForm() {
               onChange={handleChange}
               value={values.description}>
             </textarea>
-            <button className='block bg-green-500 mt-8 px-2 py-3 text-xl font-bold rounded-md w-48 m-auto transition-all hover:bg-green-600 hover:scale-95' type='submit' disabled={isSubmitting}> 
+            <button className='block bg-green-500 mt-8 px-2 py-3 text-xl font-bold rounded-md w-48 m-auto transition-all hover:bg-green-600 hover:scale-95' type='submit' disabled={isSubmitting}>
               {isSubmitting ? "Salvando" : "Salvar"}
             </button>
           </Form>

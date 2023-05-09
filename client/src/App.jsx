@@ -5,7 +5,9 @@ import NotFound from './pages/NotFound';
 import { TaskContextProvider } from './context/TaskProvider';
 import Navbar from './components/Navbar';
 
+
 function App() {
+
   return (
     <div className='bg-gray-800 min-h-screen '>
       <Navbar />
