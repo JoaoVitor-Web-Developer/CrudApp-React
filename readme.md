@@ -1,4 +1,4 @@
------> Como executar o dockcer:
+-----> Como executar o docker:
 
 docker exec -it mymysql bash
 mysql -u root --password
