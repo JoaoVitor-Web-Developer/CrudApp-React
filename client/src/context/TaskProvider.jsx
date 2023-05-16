@@ -5,7 +5,7 @@ import { TaskContext } from './TaskContext';
 export const useTasks = () => {
     const context = useContext(TaskContext);
     if (context === undefined) {
-        throw new Error('Tarefas de uso devem ser usadas dentro de um Provedor de Contexto de Tarefa')
+        throw new Error('Error')
     }
     return context;
 };

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import TasksCard from '../components/TasksCard';
 import { useTasks } from '../context/TaskProvider';
-import dataImg from '../image/dataImg.svg'
+import dataImg from '../image/dataImg.svg';
+
 
 function TasksPage() {
   const { tasks, loadTasks } = useTasks();
@@ -38,26 +39,7 @@ function TasksPage() {
         </>
       );
     return currentTasks.map((task) => <TasksCard task={task} key={task.id} />)
-  }
-
-  function renderPageNumbers() {
-    const pageNumbers = [];
-
-    for (let i = 1; i <= totalPages; i++) {
-      pageNumbers.push(
-        <button
-          key={i}
-          className={`px-2 py-1 rounded-md text-lg transition-all hover:bg-gray-200 ${currentPage === i ? 'bg-gray-200' : 'bg-white'
-            }`}
-          onClick={() => setCurrentPage(i)}
-        >
-          {i}
-        </button>
-      );
-    }
-    return pageNumbers;
-  }
-
+  };
 
   return (
     <div>
@@ -78,8 +60,21 @@ function TasksPage() {
               setCurrentPage(1);
             }
           }}
-          className='bg-white w-80 h-9 rounded-xl pl-4 mb-4 mt-3 text-black'
+          className='bg-white w-80 h-9 rounded-xl pl-4 pr-10 mb-4 mt-3 text-black'
         />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5 text-gray-400 absolute right-3 top-3 pointer-events-none"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fillRule="evenodd"
+            d="M9 18a9 9 0 100-18A9 9 0 009 18zm0-1.8a7.2 7.2 0 110-14.4 7.2 7.2 0 010 14.4zm4.95-6.3l3.6 3.6a.9.9 0 01-1.27 1.27l-3.6-3.6a5.6 5.6 0 111.27-1.27z"
+            clipRule="evenodd"
+          />
+        </svg>
+
 
         <div className='flex flex-col sm:flex-row items-center justify-center sm:justify-end w-full sm:w-auto'>
           <select className='bg-white text-black w-full sm:w-36 text-center rounded-md p-1 my-2 sm:my-0 mx-4' value={selectedFilter} onChange={(event) => {
